@@ -14,20 +14,12 @@
     </div>
 
     <p>Add a new project</p>
-    <form>
-        <label for="name">Enter a name</label><input type="text" id="name">
-        <label for="description">Enter a description</label><input type="text" id="description">
-        <label for="link">Enter the web URL</label><input type="text" id="link">
-        <label for="git">Enter the GitHub link</label><input type="text" id="git">
+    <form action="admin/new" method="post">
+        <label for="name">Enter a name</label><input type="text" id="name" name="name">
+        <label for="description">Enter a description</label><input type="text" id="description" name="description">
+        <label for="link">Enter the web URL</label><input type="text" id="link" name="link">
+        <label for="git">Enter the GitHub link</label><input type="text" id="git" name="git">
+        <button type="submit">envoyer</button>
     </form>
 
-    <div class="example-wrapper">
-        <h1>Hello! ✅</h1>
-
-        This friendly message is coming from:
-        <ul>
-            <li>Your controller at <code><a href="{{ 'src/Controller/UserController.php'|file_link(0) }}">src/Controller/UserController.php</a></code></li>
-            <li>Your template at <code><a href="{{ 'templates/user/index.html.twig'|file_link(0) }}">templates/user/index.html.twig</a></code></li>
-        </ul>
-    </div>
 {% endblock %}

@@ -55,17 +55,17 @@ class ProjectController extends Controller
         // return $this->render('product/show.html.twig', ['product' => $product]);
     }
 
-    /**
-    * @Route("/", name="project_showAll")
+     /**
+    * @Route("/project/all", name="project_showAll")
     */
-    public function indexAll()
-    {
-        $repository = $this->getDoctrine()
-        ->getRepository(Project::class)->findAll();
+    // public function indexAll()
+    // {
+    //     $repository = $this->getDoctrine()
+    //     ->getRepository(Project::class)->findAll();
 
-        // $project = $repository;
+    //     // $project = $repository;
 
-        return $this->render('admin/index.html.twig', ['projects' => $repository]);
-    }
+    //     return $this->render('admin/index.html.twig', ['projects' => $repository]);
+    // }
 
 }

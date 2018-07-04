@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello Tom!{% endblock %}
+
+{% block body %}
+    <style>
+        .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+        .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    </style>
+
+    <h1>Congratulations !</h1>
+
+    <p>You add a new project : </p>
+
+    <div>
+        <p>name : {{ project.name }}</p>
+        <p>description : {{ project.description }}</p>
+        <p>link : {{ project.link }}</p>
+        <p>git : {{ project.git }}</p>
+    </div>
+
+    <p><a href="/admin">Come back to your admin page</a></p>
+
+{% endblock %}

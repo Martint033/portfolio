@@ -9,7 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class UserController extends Controller
 {
     /**
-     * @Route("/user", name="user")
+     * @Route("/", name="user")
      */
     public function index()
     {

@@ -51,20 +51,35 @@ class SecurityController extends AbstractController
      * @Route("/admin", name="admin")
      */
     public function admin()
-    {   
-        $projects = New ProjectController;
-        $allProjects = $projects->indexAll();
-
-        return $this->render('admin/index.html.twig', array('projects'=>$allProjects));
-    }
- 
-       //
-     /**
-     * @Route("/", name="index")
-     */
-    public function index()
     {
-        return $this->render('admin/index.html.twig', []);
+        $repository = $this->getDoctrine()
+        ->getRepository(Project::class)->findAll();
+
+        // $project = $repository;
+
+        return $this->render('admin/index.html.twig', ['projects' => $repository]);
     }
- 
+
+    //
+    /**
+     * @Route("/admin/new", name="admin_new")
+     */
+    public function add()
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+
+        $project = new Project();
+        $project->setName($_POST['name']);
+        $project->setDescription($_POST['description']);
+        $project->setLink($_POST['link']);
+        $project->setGit($_POST['git']);
+
+        // tell Doctrine you want to (eventually) save the Product (no queries yet)
+        $entityManager->persist($project);
+
+        // actually executes the queries (i.e. the INSERT query)
+        $entityManager->flush();
+
+        return $this->render('admin/new.html.twig', ['project' => $project]);
+    }
 }
