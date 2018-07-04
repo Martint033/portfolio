@@ -36,6 +36,11 @@ class Project
      */
     private $description;
 
+    /**
+     * @ORM\Column(type="text")
+     */
+    private $image;
+
     public function getId()
     {
         return $this->id;
@@ -85,6 +90,18 @@ class Project
     public function setDescription(string $description): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage(string $image): self
+    {
+        $this->image = $image;
 
         return $this;
     }

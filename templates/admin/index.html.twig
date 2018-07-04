@@ -7,6 +7,9 @@
         .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
         .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
     </style>
+    <h1>Welcome to your admin page Tom !</h1>
+
+    <h2>There it is all your beautiful projects :) :</h2>
     <div>
         {% for project in projects %}
             <p>{{ project.name }} 
@@ -16,7 +19,7 @@
         {% endfor %}
     </div>
 
-    <p>Add a new project</p>
+    <h2>What about adding a new project ?</h2>
     <form action="admin/new" method="post">
         <label for="name">Enter a name</label><input type="text" id="name" name="name">
         <label for="description">Enter a description</label><input type="text" id="description" name="description">
