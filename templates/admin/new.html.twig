@@ -10,13 +10,13 @@
 
     <h1>Congratulations !</h1>
 
-    <p>You add a new project : </p>
+    <p>{{ message }}</p>
 
     <div>
         <p>name : {{ project.name }}</p>
         <p>description : {{ project.description }}</p>
-        <p>link : {{ project.link }}</p>
-        <p>git : {{ project.git }}</p>
+        <p>link : <a href="{{ project.link }}">{{ project.link }}</a></p>
+        <p>git : <a href="{{ project.git }}">{{ project.git }}</a></p>
     </div>
 
     <p><a href="/admin">Come back to your admin page</a></p>

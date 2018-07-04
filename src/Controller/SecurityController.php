@@ -80,6 +80,55 @@ class SecurityController extends AbstractController
         // actually executes the queries (i.e. the INSERT query)
         $entityManager->flush();
 
-        return $this->render('admin/new.html.twig', ['project' => $project]);
+        return $this->render('admin/new.html.twig', ['project' => $project, 'message' => 'You add a new project : ']);
+    }
+
+    //
+    /**
+     * @Route("/admin/remove/{id}", name="admin_remove", requirements={"id"="\d+"})
+     */
+    public function remove($id)
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+        $project = $entityManager->getRepository(Project::class)->find($id);
+        $name = $project->getName();
+        $entityManager->remove($project);
+        $entityManager->flush();
+
+        return $this->render('admin/delete.html.twig', ['name' => $name]);
+    }
+
+    //
+    /**
+     * @Route("/admin/update/{id}", name="admin_update", requirements={"id"="\d+"})
+     */
+    public function update($id)
+    {
+        $project = $this->getDoctrine()->getManager()->getRepository(Project::class)->find($id);
+
+        return $this->render('admin/update.html.twig', ['project' => $project]);
+    }
+
+    //
+    /**
+     * @Route("/admin/update/validation/{id}", name="admin_update-validation", requirements={"id"="\d+"})
+     */
+    public function updateValidation($id)
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+
+        $project = $this->getDoctrine()->getManager()->getRepository(Project::class)->find($id);
+        $project->setName($_POST['name']);
+        $project->setDescription($_POST['description']);
+        $project->setLink($_POST['link']);
+        $project->setGit($_POST['git']);
+
+        // tell Doctrine you want to (eventually) save the Product (no queries yet)
+        $entityManager->persist($project);
+
+        // actually executes the queries (i.e. the INSERT query)
+        $entityManager->flush();
+
+        return $this->render('admin/new.html.twig', ['project' => $project, 'message' => 'Your modification has been accept : ']);
     }
 }
