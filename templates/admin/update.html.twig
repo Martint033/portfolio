@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello Tom!{% endblock %}
+
+{% block body %}
+    <style>
+        .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+        .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    </style>
+
+    <h1>Update the project {{ project.name }} </h1>
+
+    
+
+    <form action="validation/{{ project.id }}" method="post">
+        <label for="name">Enter a name</label><input type="text" id="name" name="name" value="{{ project.name }}">
+        <label for="description">Enter a description</label><input type="text" id="description" name="description" value="{{ project.description }}">
+        <label for="link">Enter the web URL</label><input type="text" id="link" name="link" value="{{ project.link }}">
+        <label for="git">Enter the GitHub link</label><input type="text" id="git" name="git" value="{{ project.git }}">
+        <button type="submit">envoyer</button>
+    </form>
+
+    <p><a href="/admin">Come back to your admin page</a></p>
+
+{% endblock %}
