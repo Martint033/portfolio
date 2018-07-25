@@ -12,7 +12,11 @@
 
 <div>
     {% for project in projects %}
-        <p>{{ project.name }}</p>
+        <p class="projectList">{{ project.name }}</p>
     {% endfor %}
 </div>
+{% endblock %}
+
+{% block javascripts %}
+<script src="{{ asset('js/home.js') }}"></script>
 {% endblock %}
